@@ -1,0 +1,35 @@
+﻿@model Tuple<Student, List<ClassRoom>> 
+
+
+<h3 class="text-center">Yeni Öğrenci Ekleme Sayfası </h3>
+<form method="post" asp-controller="Student" asp-area="Management" asp-action="Create"> 
+    <div class="mb-3">
+        <label class="form-label" asp-for="Item1.FirstName">İsim</label>
+        <input type="text" style='text-transform:uppercase' class="form-control" asp-for="Item1.FirstName"/>
+        <span asp-validation-for="Item1.FirstName" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label class="form-label" asp-for="Item1.LastName">Soyisim</label>
+        <input type="text" style='text-transform:uppercase' class="form-control" asp-for="Item1.LastName"/>
+        <span asp-validation-for="Item1.LastName" class="text-danger"></span>
+    </div>
+
+     <div class="mb-3">
+        <label class="form-label" asp-for="Item1.DateOfBirth">Doğum Tarihi</label>
+        <input type="date" value="" class="form-control" asp-for="Item1.DateOfBirth"/>
+        <span asp-validation-for="Item1.DateOfBirth" class="text-danger"></span>
+    </div>
+    
+
+    <div class="mb-3">
+        <label class="form-label" asp-for="Item1.ClassRoomID">Sınıf </label><br />
+        <select class="form-control" asp-for="Item1.ClassRoomID" asp-items="@(new SelectList(Model.Item2, "ID" , "ID"))">
+
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <button class="btn btn-primary" type="submit">Kaydet</button>
+
+    </div>
+</form> 

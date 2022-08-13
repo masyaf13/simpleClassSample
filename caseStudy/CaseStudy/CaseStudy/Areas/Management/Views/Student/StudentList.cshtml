@@ -1,0 +1,32 @@
+﻿@model List<Student>
+
+<h3 class="text-center">Öğrenci Listeleme Sayfası</h3>
+<a asp-controller="Student" asp-action="Create" asp-area="Management" class="btn btn-primary" style="float:right">Yeni Ekle</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>İsim</th>
+            <th>Soyisim</th>
+            <th>Doğum Tarihi</th>
+            <th>Sınıf </th>
+            <th>Aksiyon </th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (var i = 0; i < Model.Count; i++)
+        {
+            <tr>
+                <th>@(i+1) </th>
+                <td>@Model[i].FirstName</td>
+                <td>@Model[i].LastName</td>
+                <td>@Model[i].DateOfBirth.ToShortDateString()</td>
+                <td>@Model[i].ClassRoom.ID</td>
+                <td>
+                    <a class="big-icon" asp-controller="Student" asp-action="Edit" asp-area="Management" asp-route-id="@Model[i].ID"><i class="bi bi-pencil-square"></i></a>
+                    <a class="big-icon margin-icon" asp-controller="Student" asp-action="Delete" asp-area="Management" asp-route-id="@Model[i].ID"><i class="bi bi-x-circle-fill"></i></a>
+                </td> 
+            </tr>
+        }
+    </tbody>
+</table>

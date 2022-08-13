@@ -1,0 +1,24 @@
+﻿
+@model Tuple<Student, List<ClassRoom>>
+
+<h3 class="text-center">Öğrenci Güncelleme Sayfası </h3>
+<form method="post" asp-controller="Student" asp-action="Edit" asp-area="Management">
+    <div class="mb-3">
+        <label class="form-label" asp-for="Item1.FirstName">İsim</label>
+        <input type="text" style='text-transform:uppercase' class="form-control" asp-for="Item1.FirstName"/>
+    </div>
+    <div class="mb-3">
+        <label class="form-label" asp-for="Item1.LastName">Soyisim</label>
+        <input type="text" style='text-transform:uppercase' class="form-control" asp-for="Item1.LastName"/>
+    </div>
+    <div class="mb-3">
+        <label class="form-label" asp-for="Item1.DateOfBirth">Doğum Tarihi</label>
+        <input type="date" class="form-control" asp-for="Item1.DateOfBirth"/>
+    </div>
+    <div class="mb-3">
+        <label class="form-label" asp-for="Item1.ClassRoomID">Sınıf </label><br />
+        <select class="form-control" asp-for="Item1.ClassRoomID" asp-items="@(new SelectList(Model.Item2, "ID","ID"))"></select>
+    </div>
+     <input asp-for="Item1.ID" type="hidden"/>
+    <button type="submit" class="btn btn-primary">Güncelle</button>  
+</form>
